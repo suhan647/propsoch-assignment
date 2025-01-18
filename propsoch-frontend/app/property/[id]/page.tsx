@@ -41,10 +41,18 @@ const PropertyDetailPage = () => {
   }
 
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto', marginBottom:'40px' }}>
+    <div
+     className='property-container'
+     >
       <div style={{ position: 'relative', display:'flex', justifyContent:'center' }}>
-        <img src={property.images[0]} alt={property.title} style={{ width: '389px', height: '486px', borderRadius: '16px' }} />
-        <div style={{ position: 'absolute', top: '10px', left: '10px', backgroundColor: 'white', padding: '5px 10px', borderRadius: '5px' }}>
+        <img 
+        src={property.images[0]} 
+        alt={property.title} 
+        className="property-image"
+        />
+        <div 
+        className='most-liked'
+        >
           <p style={{ margin: 0, fontSize: '14px' }}>Most Liked</p>
         </div>
       </div>

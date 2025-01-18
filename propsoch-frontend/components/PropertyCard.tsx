@@ -1,11 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Slider from 'react-slick';
 import { Box, Typography } from '@mui/material';
-import { AiOutlineEye, AiFillStar, AiOutlineHeart } from 'react-icons/ai';
-import { useRouter } from 'next/navigation'; 
+import { AiOutlineEye, AiFillStar } from 'react-icons/ai';
+import { useRouter } from 'next/navigation';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -14,7 +14,7 @@ function PropertyCard({ properties }: any) {
   const router = useRouter();
 
   const handleCardClick = (id: string) => {
-    router.push(`/property/${id}`); 
+    router.push(`/property/${id}`);
   };
 
   return (
@@ -28,7 +28,7 @@ function PropertyCard({ properties }: any) {
       {properties.map((property: any) => (
         <Box
           key={property.id}
-          onClick={() => handleCardClick(property.id)} 
+          onClick={() => handleCardClick(property.id)}
           sx={{
             width: { xs: 'calc(50% - 8px)', sm: 'calc(33.33% - 8px)', md: 'calc(25% - 8px)' },
             height: '360px',
@@ -36,10 +36,10 @@ function PropertyCard({ properties }: any) {
             borderRadius: '16px',
             overflow: 'hidden',
             position: 'relative',
-            cursor: 'pointer', 
+            cursor: 'pointer',
           }}
         >
-          <ImageCarousel images={property.images} />
+          <ImageCarousel images={property.images} propertyId={property.id} />
           <Box padding={1} display="flex" flexDirection="column" justifyContent="space-between">
             <Box
               display="flex"
@@ -73,7 +73,14 @@ function PropertyCard({ properties }: any) {
   );
 }
 
-function ImageCarousel({ images }: any) {
+function ImageCarousel({ images, propertyId }: any) {
+  const [toggle, setToggle] = useState(false);
+
+  const handleHeartClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); 
+    setToggle(!toggle);
+  };
+
   const settings = {
     dots: true,
     infinite: true,
@@ -93,24 +100,34 @@ function ImageCarousel({ images }: any) {
         <ul style={{ margin: 0, padding: 0, listStyleType: 'none' }}>{dots}</ul>
       </div>
     ),
-    customPaging: () => (
+    customPaging: (i: number) => (
       <div
         style={{
-          width: '4px',
-          height: '4px',
+          width: '8px',
+          height: '8px',
           backgroundColor: 'white',
           borderRadius: '50%',
+          opacity: 0.5,
         }}
       ></div>
     ),
+    beforeChange: (current: number, next: number) => {
+      const dots = document.querySelectorAll('.slick-dots li div');
+      dots.forEach((dot, index) => {
+        if (index === next) {
+          (dot as HTMLElement).style.opacity = '1';
+        } else {
+          (dot as HTMLElement).style.opacity = '0.5';
+        }
+      });
+    },
   };
 
   return (
-    <Box position="relative" sx={{borderRadius: 30}}>
+    <Box position="relative" sx={{ borderRadius: 30 }}>
       <Slider {...settings}>
         {images.map((image: any, index: any) => (
-          <Box key={index} position="relative" 
-          >
+          <Box key={index} position="relative">
             <Image
               src={image}
               alt={`Property image ${index + 1}`}
@@ -123,39 +140,39 @@ function ImageCarousel({ images }: any) {
                 height: '246px',
               }}
             />
-           
+
             <Box
+              onClick={handleHeartClick}
               sx={{
                 position: 'absolute',
                 top: '10px',
                 right: '10px',
                 cursor: 'pointer',
-                // backgroundColor: 'white',
                 borderRadius: '50%',
                 width: '30px',
                 height: '30px',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                zIndex: 10,
               }}
             >
-              {/* <AiOutlineHeart size={20} color="#000" /> */}
               <Image
-              src="/images/heart.png"
-              width={20}
-              height={50}
-              alt='heart'
-              style={{color: 'black'}}
+                src={toggle ? "/images/heart-red.png" : "/images/heart.png"}
+                width={24}
+                height={24}
+                alt="heart"
+                style={{ color: 'black' }}
               />
             </Box>
-            
+
             <Box
               sx={{
                 position: 'absolute',
                 top: '10px',
                 left: '10px',
                 backgroundColor: 'white',
-                borderRadius: '4px',
+                borderRadius: '10px',
                 padding: '4px 8px',
               }}
             >
@@ -171,4 +188,3 @@ function ImageCarousel({ images }: any) {
 }
 
 export default PropertyCard;
-

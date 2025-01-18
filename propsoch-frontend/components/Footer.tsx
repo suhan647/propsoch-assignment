@@ -22,7 +22,6 @@ const Footer = () => {
   return (
     <AppBar position="fixed" color="default" sx={{ top: 'auto', bottom: 0, color: '#222222' }}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-around' }}>
-        {/* Explore Tab */}
         <Box
           sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
           onClick={() => handleTabClick('explore', '/')}
