@@ -72,7 +72,8 @@ export const mockPropertyData = [
         amenities: ["Park", "Gym", "Swimming Pool"],
         propertyType: "Apartment",
         availability: "Available",
-         coordinates: { lat: 28.4595, lng: 77.0266 },
+        coordinates: { lat: 28.4595, lng: 77.0266 },
+        
       },
       {
         id: 4,

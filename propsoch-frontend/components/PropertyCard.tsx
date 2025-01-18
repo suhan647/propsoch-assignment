@@ -63,7 +63,7 @@ function PropertyCard({ properties }: any) {
             <Typography variant="subtitle1" fontWeight="bold" sx={{fontWeight:600, fontSize:12}}>
               {property.title}
             </Typography>
-            <Typography variant="body2" color="#888888" sx={{position:'absolute', bottom:"0px", fontWeight:300, fontSize:10}}>
+            <Typography variant="body2" color="#888888" sx={{position:'absolute', bottom:"20px", fontWeight:300, fontSize:10}}>
               {property.date}
             </Typography>
           </Box>
@@ -130,7 +130,7 @@ function ImageCarousel({ images }: any) {
                 top: '10px',
                 right: '10px',
                 cursor: 'pointer',
-                backgroundColor: 'white',
+                // backgroundColor: 'white',
                 borderRadius: '50%',
                 width: '30px',
                 height: '30px',
@@ -139,7 +139,14 @@ function ImageCarousel({ images }: any) {
                 justifyContent: 'center'
               }}
             >
-              <AiOutlineHeart size={20} color="#000" />
+              {/* <AiOutlineHeart size={20} color="#000" /> */}
+              <Image
+              src="/images/heart.png"
+              width={20}
+              height={50}
+              alt='heart'
+              style={{color: 'black'}}
+              />
             </Box>
             
             <Box
