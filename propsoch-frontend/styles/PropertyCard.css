@@ -1,0 +1,133 @@
+.property-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  border-radius: 30px;
+}
+
+.property-card {
+  width: calc(50% - 8px);
+  height: 360px;
+  max-width: 177px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.property-card:hover {
+  transform: scale(1.05);
+}
+
+@media (min-width: 600px) {
+  .property-card {
+    width: calc(33.33% - 8px);
+  }
+}
+
+@media (min-width: 960px) {
+  .property-card {
+    width: calc(25% - 8px);
+  }
+}
+
+.property-info {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.property-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-text {
+  font-size: 12px;
+  color: #888888;
+  font-weight: 300;
+}
+
+.stat-text.green {
+  color: #278717;
+}
+
+.property-title {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.property-date {
+  position: absolute;
+  bottom: 8px;
+  font-size: 10px;
+  color: #888888;
+  font-weight: 300;
+}
+
+.carousel-container {
+  position: relative;
+}
+
+.carousel-image {
+  border-radius: 16px;
+  object-fit: cover;
+  width: 176.5px;
+  height: 246px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-dot {
+  width: 4px;
+  height: 4px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.heart-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.most-liked {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: white;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
